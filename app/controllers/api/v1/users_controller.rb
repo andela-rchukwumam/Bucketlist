@@ -1,9 +1,9 @@
 class Api::V1::UsersController < ApplicationController
   respond_to :json, :xml
-  before_action :authenticate, except: [:create]
+  # before_action :authenticate, except: [:create]
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params) if user_params
     if @user.save
       render json: @user
     else
