@@ -5,6 +5,7 @@ gem 'rails', '4.2.4'
 gem 'rails-api'
 gem "active_model_serializers", "~> 0.8.0"
 gem 'jwt', "~> 1.5"
+gem 'pry'
 
 gem 'spring', :group => :development
 

@@ -3,11 +3,13 @@ class Api::V1::ListsController < ApplicationController
 
   def index
     @lists = List.find_by(user_id: params[:user_id])
+    # binding.pry
     render json: @lists
   end
 
   def create
     @list = List.new(list_params)
+    @list.user_id = params[:user_id]
     if @list.save
       render json: @list
     end
