@@ -9,7 +9,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     @item = @list.items.new(item_params)
-
+    @item.done = false
     if @item.save
       render json: @item
     end

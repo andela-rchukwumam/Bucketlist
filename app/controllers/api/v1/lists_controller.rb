@@ -2,12 +2,14 @@ class Api::V1::ListsController < ApplicationController
   respond_to :json, :xml
 
   def index
-    @lists = List.all
+    @lists = List.find_by(user_id: params[:user_id])
+    # binding.pry
     render json: @lists
   end
 
   def create
     @list = List.new(list_params)
+    @list.user_id = params[:user_id]
     if @list.save
       render json: @list
     end
@@ -30,7 +32,7 @@ class Api::V1::ListsController < ApplicationController
     redirect_to api_v1_lists_path, status: 303
   end
 
-private
+  private
 
   def list_params
     params.permit(:name)
