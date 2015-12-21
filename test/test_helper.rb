@@ -4,6 +4,13 @@ require 'rails/test_help'
 require 'coveralls'
 Coveralls.wear!
 
+SimpleCov.start do
+  formatter SimpleCov::Formatter::MultiFormatter[
+    CodeClimate::TestReporter::Formatter,
+    Coveralls::SimpleCov::Formatter
+  ]
+end
+
 # class ActiveSupport::TestCase
 #   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
 #   fixtures :all
