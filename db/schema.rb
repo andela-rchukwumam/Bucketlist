@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20151217124855) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "done"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "done",       default: false
   end
 
   add_index "items", ["list_id"], name: "index_items_on_list_id"

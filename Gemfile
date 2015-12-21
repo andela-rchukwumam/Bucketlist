@@ -6,6 +6,7 @@ gem 'rails-api'
 gem "active_model_serializers", "~> 0.8.0"
 gem 'jwt', "~> 1.5"
 gem 'pry'
+gem 'pry-rails'
 
 gem 'spring', :group => :development
 
@@ -15,6 +16,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'responders', '~> 2.0'
 
 group :test do
+  gem "coveralls", require: false
   gem "rspec-rails"
 end
 # To use ActiveModel has_secure_password
