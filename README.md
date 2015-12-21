@@ -9,14 +9,14 @@ This is an API for a bucket list service. Specification for the API is shown bel
 |---------------------|:----:|
 |**POST /auth/login:** |Logs a user in
 | **GET /auth/logout:**| Logs a user out
-| **POST /bucketlists:**| Creates a new bucket list
-| **GET /bucketlists:**| Lists all the created bucket lists
-|**GET /bucketlists/(id):**| Gets a single bucket list
-| **PUT /bucketlists/(id):** |Updates this single bucket list
-| **DELETE /bucketlists/(id):**| Deletes this single bucket list
-| **POST /bucketlists/(id)/items:** |Creates a new item in bucket list
-|**PUT /bucketlists/(id)/items/(item_id):**| Updates a bucket list item
-|**DELETE /bucketlists/(id)/items/(item_id):**| Deletes an item in a bucket list
+| **POST /lists:**| Creates a new bucket list
+| **GET /lists:**| Lists all the created bucket lists
+|**GET /lists/(id):**| Gets a single bucket list
+| **PUT /lists/(id):** |Updates this single bucket list
+| **DELETE /lists/(id):**| Deletes this single bucket list
+| **POST /lists/(id)/items:** |Creates a new item in bucket list
+|**PUT /lists/(id)/items/(item_id):**| Updates a bucket list item
+|**DELETE /lists/(id)/items/(item_id):**| Deletes an item in a bucket list
 
 ## Data Model
  The JSON data model for a bucket list and a bucket list item is shown below.
@@ -25,7 +25,10 @@ This is an API for a bucket list service. Specification for the API is shown bel
 {
   id: 1,
   name: “BucketList1”,
-  items: [
+  date_created: “2015-08-12 11:57:23”,
+  date_modified: “2015-08-12 11:57:23”
+  created_by: “Owner's Name”
+    items: [
          {
                id: 1,
                name: “I need to do X”,
@@ -34,9 +37,6 @@ This is an API for a bucket list service. Specification for the API is shown bel
                done: False
              }
            ]
-  date_created: “2015-08-12 11:57:23”,
-  date_modified: “2015-08-12 11:57:23”
-  created_by: “Owner's Name”
 }
 ```
 
@@ -48,14 +48,14 @@ Json Web Tokens(JWT), Token Based System was used for this API. With this, some 
 |---------------------|:----:|
 |**POST /auth/login:**| TRUE |
 | **GET /auth/logout:**| FALSE|
-| **POST /bucketlists:**| FALSE|
-| **GET /bucketlists:**| FALSE|
-| **GET /bucketlists/(id):**| FALSE|
-| **PUT /bucketlists/(id):**| FALSE|
-| **DELETE /bucketlists/(id):**| FALSE |
-|**POST /bucketlists/(id)/items:**|  FALSE|
-| **PUT /bucketlists/(id)/items/(item_id):**| FALSE|
-| **DELETE /bucketlists/(id)/items/(item_id):**| FALSE|
+| **POST /lists:**| FALSE|
+| **GET /lists:**| FALSE|
+| **GET /lists/(id):**| FALSE|
+| **PUT /lists/(id):**| FALSE|
+| **DELETE /lists/(id):**| FALSE |
+|**POST /lists/(id)/items:**|  FALSE|
+| **PUT /lists/(id)/items/(item_id):**| FALSE|
+| **DELETE /lists/(id)/items/(item_id):**| FALSE|
 
 ## Pagination
 This API is paginated such that users can specify the number of results they would like to have via a `GET parameter` `limit`.
