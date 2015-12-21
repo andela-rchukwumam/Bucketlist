@@ -6,6 +6,7 @@ gem 'rails-api'
 gem "active_model_serializers", "~> 0.8.0"
 gem 'jwt', "~> 1.5"
 gem 'pry'
+gem 'pry-rails'
 
 gem 'spring', :group => :development
 
@@ -13,6 +14,8 @@ gem 'sqlite3'
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'responders', '~> 2.0'
+gem "coveralls", require: false
+
 
 group :test do
   gem "rspec-rails"
@@ -20,6 +23,9 @@ end
 # To use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+group :development, :test do
+  gem "codeclimate-test-reporter"
+end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

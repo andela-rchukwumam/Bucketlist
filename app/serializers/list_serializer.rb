@@ -11,6 +11,6 @@ class ListSerializer < ActiveModel::Serializer
   end
 
   def created_by
-    object.user.full_name
+    current_user.full_name
   end
 end

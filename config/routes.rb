@@ -3,11 +3,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "auth/login"
       get "auth/logout"
-      resources :users, only: [:create] do
+      resources :users, only: [:create]
         resources :lists do
           resources :items
         end
-      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

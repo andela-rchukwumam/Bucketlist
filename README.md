@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/andela-rchukwumam/Bucketlist/badges/gpa.svg)](https://codeclimate.com/github/andela-rchukwumam/Bucketlist)
+[![Coverage Status](https://coveralls.io/repos/andela-rchukwumam/Bucketlist/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-rchukwumam/Bucketlist?branch=master)
 == README
 
 This README would normally document whatever steps are necessary to get the
