@@ -55,13 +55,7 @@ module ActionDispatch
 
     def create_bucketlist
       @auth_token = login
-      50.times do
-        post '/api/v1/lists/',
-             { name: 'My first list'}.to_json,
-             'Accept' => Mime::JSON,
-             'Content-Type' => Mime::JSON.to_s,
-             'Authorization' => @auth_token
-      end
+      List.create(name: "My first list")
     end
 
     def create_item

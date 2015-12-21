@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class BucketlistsControllerTest < ActionDispatch::IntegrationTest
+class ListsControllerTest < ActionDispatch::IntegrationTest
   test 'creates a bucketlist' do
     auth_token = login
     post '/api/v1/lists/',
-         { name: 'list 1'}.to_json,
+         { name: 'list 1' }.to_json,
          'Accept' => Mime::JSON,
          'Content-Type' => Mime::JSON.to_s, 'Authorization' => auth_token
     assert_equal 201, response.status
@@ -13,7 +13,7 @@ class BucketlistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal bucketlist['list']['name'], 'list 1'
   end
 
-  test 'rejects bucketlists without name' do
+  test 'bucketlists without name' do
     auth_token = login
     post '/api/v1/lists/',
          { name: nil, publicity: true }.to_json,
@@ -25,7 +25,7 @@ class BucketlistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal error['name'][0], "can't be blank"
   end
 
-  test 'Shows users bucketlists and others public bucketlists' do
+  test 'shows users bucketlists and others public bucketlists' do
     auth_token = login
     get '/api/v1/lists', {},
         'Accept' => Mime::JSON,
@@ -34,7 +34,7 @@ class BucketlistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Mime::JSON, response.content_type
   end
 
-  test 'Shows error message if bucketlist id is not found' do
+  test 'shows error message if bucketlist id is not found' do
     auth_token = login
     create_bucketlist
     get '/api/v1/lists/100', {},
@@ -58,27 +58,27 @@ class BucketlistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal bucketlist['lists'][0]['name'], 'My first list'
   end
 
-  # test 'updates bucketlist' do
-  #   auth_token = login
-  #   create_bucketlist
-  #   patch '/api/v1/lists/7', { name: 'My updated bucketlist' }.to_json,
-  #         'Accept' => Mime::JSON,
-  #         'Content-Type' => Mime::JSON.to_s, 'Authorization' => auth_token
-  #   assert_equal 202, response.status
-  #   assert_equal Mime::JSON, response.content_type
-  #   bucketlist = JSON.parse(response.body)
-  #   assert_equal bucketlist['list']['name'], 'My updated bucketlist'
-  # end
+  test 'updates bucketlist' do
+    auth_token = login
+    list = create_bucketlist
+    patch "/api/v1/lists/#{list.id}", { name: 'My updated bucketlist' }.to_json,
+          'Accept' => Mime::JSON,
+          'Content-Type' => Mime::JSON.to_s, 'Authorization' => auth_token
+    assert_equal 202, response.status
+    assert_equal Mime::JSON, response.content_type
+    bucketlist = JSON.parse(response.body)
+    assert_equal bucketlist['list']['name'], 'My updated bucketlist'
+  end
 
-  # test 'deletes bucketlist' do
-  #   auth_token = login
-  #   create_bucketlist
-  #   delete '/api/v1/lists/19', {},
-  #          'Accept' => Mime::JSON,
-  #          'Content-Type' => Mime::JSON.to_s, 'Authorization' => auth_token
-  #   assert_equal 200, response.status
-  #   assert_equal Mime::JSON, response.content_type
-  #   status = JSON.parse(response.body)
-  #   assert_equal status['Deleted'], 'Bucketlist has been deleted'
-  # end
+  test 'deletes bucketlist' do
+    auth_token = login
+    list = create_bucketlist
+    delete "/api/v1/lists/#{list.id}", {},
+           'Accept' => Mime::JSON,
+           'Content-Type' => Mime::JSON.to_s, 'Authorization' => auth_token
+    assert_equal 200, response.status
+    assert_equal Mime::JSON, response.content_type
+    status = JSON.parse(response.body)
+    assert_equal status['Deleted'], 'Bucketlist has been deleted'
+  end
 end

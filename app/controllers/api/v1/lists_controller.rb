@@ -14,7 +14,7 @@ class Api::V1::ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.user_id = params[:user_id]
+    @list.user_id = current_user.id
     if @list.save
       render json: @list, status: 201
     else

@@ -4,20 +4,26 @@ class Api::V1::ItemsController < ApplicationController
 
   def index
     @items = @list.items
-    render json: @items
+    render json: @items, status: 200
   end
 
   def create
     @item = @list.items.new(item_params)
     @item.done = false
     if @item.save
-      render json: @item
+      render json: @item, status: 201
+    else
+      render json: { Error: "can't be blank" }, status: 400
     end
   end
 
   def show
     @item = @list.items.find_by_id(params[:id])
-    render json: @item
+    if @item
+      render json: @item
+    else
+      render json: { Error: "Item does not exist" }, status: 400
+    end
   end
 
   def update
@@ -29,7 +35,7 @@ class Api::V1::ItemsController < ApplicationController
   def destroy
     @item = @list.items.find_by_id(params[:id]) if @list
     @item.destroy
-    redirect_to api_v1_lists_path, status: 303
+    render json: { Success: "Item has been deleted" }, status: 200
   end
 
   private
