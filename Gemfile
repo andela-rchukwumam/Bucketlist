@@ -7,6 +7,7 @@ gem "active_model_serializers", "~> 0.8.0"
 gem 'jwt', "~> 1.5"
 gem 'pry'
 gem 'pry-rails'
+gem 'pg'
 
 gem 'spring', :group => :development
 

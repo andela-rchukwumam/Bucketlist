@@ -75,6 +75,7 @@ GEM
     netrc (0.11.0)
     nokogiri (1.6.7-x64-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
+    pg (0.18.4-x64-mingw32)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -172,6 +173,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coveralls
   jwt (~> 1.5)
+  pg
   pry
   pry-rails
   rails (= 4.2.4)
