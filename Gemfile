@@ -10,7 +10,6 @@ gem 'pry-rails'
 
 gem 'spring', :group => :development
 
-gem 'sqlite3'
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'responders', '~> 2.0'
@@ -25,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem "codeclimate-test-reporter"
+  gem 'sqlite3'
 end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
