@@ -92,7 +92,7 @@ This API has only one version for now, and it can be accessed via -
 https://ruth-list.herokuapp.com/api/v1/endpoint
 ```
 
-## Use Online
+## API URI
  This API is currently hosted on:
  [https://ruth-list.herokuapp.com/](https://ruth-list.herokuapp.com/)
 
