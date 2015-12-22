@@ -17,7 +17,7 @@ module Api
       elsif @page == 2
         limit
       else
-      @page * limit
+        @page * limit
       end
     end
 

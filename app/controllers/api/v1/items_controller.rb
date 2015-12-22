@@ -22,7 +22,7 @@ class Api::V1::ItemsController < ApplicationController
     if @item
       render json: @item
     else
-      render json: { Error: "Item does not exist" }, status: 400
+      render json: { Error: 'Item does not exist' }, status: 400
     end
   end
 
@@ -35,7 +35,7 @@ class Api::V1::ItemsController < ApplicationController
   def destroy
     @item = @list.items.find_by_id(params[:id]) if @list
     @item.destroy
-    render json: { Success: "Item has been deleted" }, status: 200
+    render json: { Success: 'Item has been deleted' }, status: 200
   end
 
   private

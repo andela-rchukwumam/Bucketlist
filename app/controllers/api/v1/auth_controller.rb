@@ -19,7 +19,7 @@ class Api::V1::AuthController < ApplicationController
     user = current_user
     user.session = false
     user.save
-    response = { Status: 'success', body: 'Logged out successfully' }
+    response = { Status: 'Success', body: 'Logged out successfully' }
     render json: response.to_json, status: 200
   end
 
